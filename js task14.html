@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Факторіал</title>
+ <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h2>Обчислення факторіалу</h2>
+  <label for="number">Яке число ви хочете обчислити факторіал?</label><br>
+  <input type="number" id="number" placeholder="Наприклад, 5" min="0"><br><br>
+  <button onclick="calculateFactorial()">Обчислити факторіал</button>
+
+  <h3>Результат:</h3>
+  <p id="result"></p>
+
+  <script>
+    function calculateFactorial() {
+      const num = parseInt(document.getElementById('number').value);
+      if (isNaN(num) || num < 0) {
+        document.getElementById('result').innerText = "Будь ласка, введіть невід’ємне ціле число.";
+        return;
+      }
+
+      let factorial = 1;
+      for (let i = 2; i <= num; i++) {
+        factorial *= i;
+      }
+
+      document.getElementById('result').innerText = `Факторіал ${num} дорівнює ${factorial}`;
+    }
+  </script>
+    <a href="index.html" class="button">← Назад до меню</a>
+</body>
+</html>

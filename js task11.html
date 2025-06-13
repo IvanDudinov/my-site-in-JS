@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Трикутник з емодзі</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Введи емодзі та скільки їх вивести трикутником</h1>
+  <input type="text" id="emojiInput" placeholder="Емодзі (наприклад ❤️)">
+  <input type="number" id="countInput" placeholder="Кількість емодзі (наприклад 10)">
+  <button onclick="generateTriangle()">Показати трикутник</button>
+  <div id="output"></div>
+
+  <script>
+    function generateTriangle() {
+      const emoji = document.getElementById('emojiInput').value.trim();
+      const total = parseInt(document.getElementById('countInput').value);
+      const output = document.getElementById('output');
+      output.innerHTML = '';
+
+      if (!emoji || isNaN(total) || total < 1) {
+        output.innerHTML = '<div class="warning">Будь ласка, введи коректне емодзі та кількість більше нуля.</div>';
+        return;
+      }
+
+      let used = 0;
+      let rowCount = 1;
+
+      while (used + rowCount <= total) {
+        const row = document.createElement('div');
+        row.className = 'emojiRow';
+        row.textContent = emoji.repeat(rowCount);
+        output.appendChild(row);
+        used += rowCount;
+        rowCount++;
+      }
+
+      // Якщо залишилися емодзі
+      if (used < total) {
+        const row = document.createElement('div');
+        row.className = 'emojiRow';
+        row.textContent = emoji.repeat(total - used);
+        output.appendChild(row);
+      }
+    }
+  </script>
+      <a href="index.html" class="button">← Назад до меню</a>
+
+</body>
+</html>

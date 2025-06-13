@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Вгадай героя</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <h1>Вгадай героя</h1>
+  <p>Хто я? Спробуй вгадати!(Цей герой з мультфільма, у якого друг осел)</p>
+
+  <input type="text" id="guess" placeholder="Введи ім'я героя">
+  <button onclick="checkHero()">Відповісти</button>
+
+  <div id="message"></div>
+  <div class="hint" id="hint"></div>
+
+  <script>
+    const hero = "Шрек";
+    const hints = [
+      "Я зелений.",
+      "Я живу на болоті.",
+      "Я анімаційний персонаж з DreamWorks.",
+      "Я люблю самоту, але маю вірного друга Осла.",
+    ];
+
+    let attempt = 0;
+
+    function checkHero() {
+      const input = document.getElementById("guess").value.trim();
+      const message = document.getElementById("message");
+      const hintBox = document.getElementById("hint");
+
+      if (input.toLowerCase() === hero.toLowerCase()) {
+        message.textContent = "✅ Правильно! Це Шрек!";
+        hintBox.textContent = "";
+      } else {
+        if (attempt < hints.length) {
+          hintBox.textContent = "Підказка: " + hints[attempt];
+          message.textContent = "❌ Ні, спробуй ще раз.";
+          attempt++;
+        } else {
+          hintBox.textContent = "Більше підказок немає 😅";
+          message.textContent = "Схоже, це був Шрек!";
+        }
+      }
+    }
+  </script>
+<a href="index.html" class="button">← Назад до меню</a>
+</body>
+</html>

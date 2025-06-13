@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Сума чисел</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h2>Введіть два числа для обчислення суми:</h2>
+  <input type="number" id="num1" placeholder="Перше число">
+  <input type="number" id="num2" placeholder="Друге число">
+  <button onclick="calculateSum()">Обчислити суму</button>
+
+  <h3>Результат:</h3>
+  <p id="result"></p>
+
+  <script>
+    function calculateSum() {
+      const a = parseFloat(document.getElementById('num1').value);
+      const b = parseFloat(document.getElementById('num2').value);
+
+      if (isNaN(a) || isNaN(b)) {
+        document.getElementById('result').innerText = "Будь ласка, введіть обидва числа.";
+      } else {
+        const sum = a + b;
+        document.getElementById('result').innerText = "Сума: " + sum;
+      }
+    }
+  </script>
+  <a href="index.html" class="button">← Назад до меню</a>
+</body>
+</html>
+
+
+
+
+

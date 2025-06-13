@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Піднесення до степеня</title>
+   <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h2>Піднесення числа до степеня</h2>
+  <label for="base">Введіть число (основа):</label><br>
+  <input type="number" id="base" placeholder="Наприклад, 2"><br><br>
+
+  <label for="exponent">Введіть степінь (експоненту):</label><br>
+  <input type="number" id="exponent" placeholder="Наприклад, 3"><br><br>
+
+  <button onclick="calculatePower()">Обчислити</button>
+
+  <h3>Результат:</h3>
+  <p id="result"></p>
+
+  <script>
+    function calculatePower() {
+      const base = parseFloat(document.getElementById('base').value);
+      const exponent = parseFloat(document.getElementById('exponent').value);
+
+      if (isNaN(base) || isNaN(exponent)) {
+        document.getElementById('result').innerText = "Будь ласка, введіть і основу, і степінь.";
+      } else {
+        const result = Math.pow(base, exponent);
+        document.getElementById('result').innerText = `${base} у степені ${exponent} = ${result}`;
+      }
+    }
+  </script>
+   <a href="index.html" class="button">← Назад до меню</a>
+</body>
+</html>

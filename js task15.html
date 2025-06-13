@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Числа Фібоначчі</title>
+     <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h2>Послідовність Фібоначчі</h2>
+  <label for="count">Скільки чисел Фібоначчі ви хочете побачити?</label><br>
+  <input type="number" id="count" placeholder="Наприклад, 10" min="1"><br><br>
+  <button onclick="generateFibonacci()">Показати</button>
+
+  <h3>Результат:</h3>
+  <p id="result"></p>
+
+  <script>
+    function generateFibonacci() {
+      const n = parseInt(document.getElementById('count').value);
+      if (isNaN(n) || n < 1) {
+        document.getElementById('result').innerText = "Будь ласка, введіть ціле число більше нуля.";
+        return;
+      }
+
+      const fib = [0];
+      if (n > 1) fib.push(1);
+      for (let i = 2; i < n; i++) {
+        fib.push(fib[i - 1] + fib[i - 2]);
+      }
+
+      document.getElementById('result').innerText = `Перші ${n} чисел Фібоначчі: ${fib.join(', ')}`;
+    }
+  </script>
+  <a href="index.html" class="button">← Назад до меню</a>
+</body>
+</html>

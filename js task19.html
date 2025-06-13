@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Гра: Вгадай число в діапазоні</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h2>Гра: Вгадай число</h2>
+  <label for="range">Введіть максимально можливе число (діапазон від 1 до ...):</label><br>
+  <input type="number" id="range" placeholder="Наприклад, 50" min="1"><br><br>
+  <button onclick="startGame()">Почати гру</button>
+
+  <div id="gameArea" style="display:none;">
+    <p>Вгадайте число від 1 до <span id="maxRange"></span></p>
+    <input type="number" id="guess" placeholder="Ваш варіант">
+    <button onclick="checkGuess()">Перевірити</button>
+    <p id="feedback"></p>
+  </div>
+
+  <script>
+    let secretNumber;
+    let max;
+    let attempts = 0;
+
+    function startGame() {
+      max = parseInt(document.getElementById('range').value);
+      if (isNaN(max) || max < 1) {
+        alert("Будь ласка, введіть коректне число більше нуля.");
+        return;
+      }
+
+      secretNumber = Math.floor(Math.random() * max) + 1;
+      attempts = 0;
+      document.getElementById('maxRange').textContent = max;
+      document.getElementById('gameArea').style.display = 'block';
+      document.getElementById('feedback').textContent = '';
+    }
+
+    function checkGuess() {
+      const guess = parseInt(document.getElementById('guess').value);
+      attempts++;
+
+      if (isNaN(guess) || guess < 1 || guess > max) {
+        document.getElementById('feedback').textContent = "Введіть число в межах від 1 до " + max + ".";
+        return;
+      }
+
+      if (guess === secretNumber) {
+        document.getElementById('feedback').textContent = `🎉 Вітаю! Ви вгадали число ${secretNumber} за ${attempts} спроб.`;
+      } else if (guess < secretNumber) {
+        document.getElementById('feedback').textContent = "Спробуйте більше число.";
+      } else {
+        document.getElementById('feedback').textContent = "Спробуйте менше число.";
+      }
+    }
+  </script>
+  <a href="index.html" class="button">← Назад до меню</a>
+</body>
+</html>

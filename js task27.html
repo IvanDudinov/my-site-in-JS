@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Кольорові кола на Canvas</title>
+       <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background-color: black;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+        canvas {
+            margin-top: 20px;
+            background-color: white;
+            border: 2px solid white;
+        }
+    </style>
+</head>
+<body>
+    <h1>Кольорові кола на Canvas</h1>
+    <label>Кількість кіл: <input type="number" id="circleInput" placeholder="Напр. 10"></label>
+    <br>
+    <button onclick="drawCircles()">Намалювати</button>
+
+    <canvas id="circleCanvas" width="600" height="400"></canvas>
+
+    <script>
+        function getRandomColor() {
+            const letters = '0123456789ABCDEF';
+            let color = '#';
+            for (let i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+
+        function drawCircles() {
+            const count = parseInt(document.getElementById('circleInput').value);
+            const canvas = document.getElementById('circleCanvas');
+            const ctx = canvas.getContext('2d');
+
+            // Очистити білим фоном
+            ctx.fillStyle = 'white';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            for (let i = 0; i < count; i++) {
+                const radius = Math.random() * 30 + 10; // радіус 10–40
+                const x = Math.random() * (canvas.width - 2 * radius) + radius;
+                const y = Math.random() * (canvas.height - 2 * radius) + radius;
+                const fillColor = getRandomColor();
+                const strokeColor = getRandomColor();
+
+                ctx.beginPath();
+                ctx.arc(x, y, radius, 0, Math.PI * 2);
+                ctx.fillStyle = fillColor;
+                ctx.fill();
+                ctx.strokeStyle = strokeColor;
+                ctx.lineWidth = 4;
+                ctx.stroke();
+            }
+        }
+    </script>
+    <a href="index.html" class="button">← Назад до меню</a>
+</body>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Космічна вікторина</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="container">
+    <h1>Коли був перший політ у космос?(Напиши число місяць та рік)</h1>
+    <input type="text" id="answer" placeholder="Введи рік або дату">
+    <button onclick="checkAnswer()">Перевірити</button>
+    <div id="result"></div>
+  </div>
+
+  <script>
+    function checkAnswer() {
+      const userInput = document.getElementById("answer").value.trim();
+      const correctDate = ["1961", "12.04.1961", "12 квітня 1961", "12 квiтня 1961"];
+      const lowerInput = userInput.toLowerCase();
+
+      if (correctDate.includes(lowerInput)) {
+        document.getElementById("result").textContent = "✅ Правильно! Це сталося 12 квітня 1961 року.";
+      } else {
+        document.getElementById("result").textContent = "❌ Неправильно. Спробуй ще раз.";
+      }
+    }
+  </script>
+<a href="index.html" class="button">← Назад до меню</a>
+</body>
+</html>

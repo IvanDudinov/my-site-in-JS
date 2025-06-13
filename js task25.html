@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Аналіз цифр у числі</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h2>Аналіз числа</h2>
+  <input type="number" id="numberInput" placeholder="Введіть число" min="0">
+  <button onclick="analyzeNumber()">Аналізувати</button>
+
+  <h3>Результати:</h3>
+  <p id="result"></p>
+
+  <script>
+    function analyzeNumber() {
+      let numStr = document.getElementById('numberInput').value.trim();
+      if (!numStr || isNaN(numStr) || Number(numStr) < 0) {
+        document.getElementById('result').textContent = "Будь ласка, введіть додатнє ціле число.";
+        return;
+      }
+
+      let digits = numStr.split('');
+      let count = digits.length;
+      let even = 0;
+      let odd = 0;
+      let sum = 0;
+
+      digits.forEach(d => {
+        let digit = parseInt(d);
+        sum += digit;
+        if (digit % 2 === 0) {
+          even++;
+        } else {
+          odd++;
+        }
+      });
+
+      document.getElementById('result').innerHTML = `
+        Кількість цифр: ${count}<br>
+        Парних цифр: ${even}<br>
+        Непарних цифр: ${odd}<br>
+        Сума цифр: ${sum}
+      `;
+    }
+  </script>
+  <a href="index.html" class="button">← Назад до меню</a>
+</body>
+</html>

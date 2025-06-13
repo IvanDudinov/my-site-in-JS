@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Малювання фігур</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <h1>Намалюй фігури</h1>
+<div class="inputs">
+  <div class="input-block">
+    <label for="shape">Яку фігуру?</label>
+    <input type="text" id="shape" placeholder="квадрат, коло, трикутник">
+  </div>
+  <div class="input-block">
+    <label for="count">Скільки?</label>
+    <input type="number" id="count">
+  </div>
+</div>
+
+<div class="button-container">
+  <button onclick="startDrawing()">Малювати</button>
+</div>
+
+<canvas id="canvas" width="600" height="400"></canvas>
+  <script>
+    function startDrawing() {
+      const shape = document.getElementById("shape").value.trim().toLowerCase();
+      const count = parseInt(document.getElementById("count").value);
+      const canvas = document.getElementById("canvas");
+      const ctx = canvas.getContext("2d");
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      if (!["квадрат", "коло", "трикутник"].includes(shape) || isNaN(count) || count <= 0) {
+        alert("Введи одну з фігур: квадрат, коло або трикутник та коректну кількість.");
+        return;
+      }
+
+      let drawn = 0;
+
+      const interval = setInterval(() => {
+        const x = Math.random() * (canvas.width - 60) + 30;
+        const y = Math.random() * (canvas.height - 60) + 30;
+
+        switch (shape) {
+          case "квадрат":
+            ctx.fillStyle = "#2196f3";
+            ctx.fillRect(x, y, 40, 40);
+            break;
+          case "коло":
+            ctx.beginPath();
+            ctx.fillStyle = "#e91e63";
+            ctx.arc(x, y, 20, 0, 2 * Math.PI);
+            ctx.fill();
+            break;
+          case "трикутник":
+            ctx.fillStyle = "#4caf50";
+            ctx.beginPath();
+            ctx.moveTo(x, y);
+            ctx.lineTo(x - 20, y + 40);
+            ctx.lineTo(x + 20, y + 40);
+            ctx.closePath();
+            ctx.fill();
+            break;
+        }
+
+        drawn++;
+        if (drawn >= count) clearInterval(interval);
+      }, 500); // малювати кожні 0.5 секунди
+    }
+    
+  </script>
+</body>
+</html>

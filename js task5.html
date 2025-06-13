@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Міні-Банкомат</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="atm">
+    <h2>Банкомат</h2>
+    <p>Введи суму для зняття (тільки купюри від 50 грн)</p>
+    <input type="number" id="amount" placeholder="Наприклад: 100">
+    <button onclick="withdraw()">Зняти</button>
+    <div id="result"></div>
+  </div>
+
+  <script>
+    function withdraw() {
+      const sum = parseInt(document.getElementById("amount").value);
+      const result = document.getElementById("result");
+
+      if (isNaN(sum)) {
+        result.textContent = "❌ Введи число!";
+      } else if (sum < 50 || sum % 50 !== 0) {
+        result.textContent = "❌ Банкомат видає тільки купюри від 50 грн!";
+      } else {
+        result.textContent = `✅ Видано: ${sum} грн. Не забудьте свою картку:)`;
+      }
+    }
+  </script>
+<a href="index.html" class="button">← Назад до меню</a>
+</body>
+</html>

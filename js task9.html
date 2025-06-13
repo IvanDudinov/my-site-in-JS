@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Вхід на сайт</h1>
+  <p>Будь ласка, введіть свій вік:</p>
+  <input type="number" id="ageInput" placeholder="Ваш вік">
+  <button onclick="checkAge()">Увійти</button>
+  <div id="message"></div>
+
+  <script>
+    function checkAge() {
+      const age = parseInt(document.getElementById('ageInput').value);
+      const message = document.getElementById('message');
+
+      if (isNaN(age)) {
+        message.textContent = "Будь ласка, введіть коректний вік.";
+        message.style.color = "orange";
+      } else if (age < 18) {
+        message.textContent = "Вибач, доступ заборонено. Тобі має бути 18 або більше.";
+        message.style.color = "red";
+      } else {
+        message.textContent = "Ласкаво просимо! Вхід дозволено.";
+        message.style.color = "green";
+      }
+    }
+  </script>
+  <a href="index.html" class="button">← Назад до меню</a>
+</body>
+</html>

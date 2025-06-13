@@ -1,0 +1,310 @@
+body {
+  font-family: 'Arial', sans-serif;
+  background: #0758a8;
+  padding: 20px;
+  margin: 0;
+}
+
+.container {
+  max-width: 600px;
+  margin: auto;
+  background: rgb(59, 83, 146);
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(11, 162, 204, 0.648);
+}
+
+h1, h2, h3 {
+  text-align: center;
+  color: #f7f9ff;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+label {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+input {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #024a69;
+  font-size: 16px;
+}
+
+button {
+  margin-top: 15px;
+  padding: 10px;
+  background: #007bff;
+  color: rgb(254, 253, 253);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button:hover {
+  background: #0056b3;
+}
+
+.result {
+  background: #3581d2;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 30px;
+}
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f8ff;
+  padding: 20px;
+}
+
+h2 {
+  text-align: center;
+  color: #ffffff;
+}
+
+.button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #10abdb;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  margin-top: 20px;
+  justify-content: center;
+}
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #0b1a2d;
+  color: white;
+  margin: 0;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  color: #2b9dd6;
+  margin-bottom: 40px;
+}
+
+.container {
+  max-width: 500px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.block {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.5);
+}
+
+h2 {
+  text-align: center;
+  color: #ffffff;
+}
+
+label {
+  display: block;
+  margin-top: 10px;
+  color: #109fdc;
+}
+
+input {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border: none;
+  border-radius: 6px;
+  background-color: #3d566f;
+  color: rgb(47, 208, 213);
+}
+
+input::placeholder {
+  color: #cbd1d6;
+}
+
+button {
+  margin-top: 15px;
+  width: 100%;
+  padding: 10px;
+  background-color: #0050a0;
+  color: rgb(83, 156, 196);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button:hover {
+  background-color: #003d80;
+}
+
+.result {
+  margin-top: 15px;
+  text-align: center;
+  font-weight: bold;
+  color: #d6e7ea;
+}
+body {
+  background: #0b1a2d;
+  color: white;
+  font-family: sans-serif;
+  text-align: center;
+  padding: 20px;
+}
+
+input, button {
+  padding: 10px;
+  margin: 10px;
+  font-size: 16px;
+  width: 250px;
+  max-width: 90%;
+}
+
+button {
+  background: #0050a0;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #003d80;
+}
+
+.hint {
+  margin-top: 15px;
+  font-style: italic;
+  color: #b0bec5;
+}
+
+#message {
+  margin-top: 15px;
+  font-weight: bold;
+}
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #121212;
+  color: #f1f1f1;
+}
+
+/* Центрована картка */
+.card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #1e1e1e;
+  border-radius: 12px;
+  padding: 2rem;
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
+
+.card h1 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: #ffffff;
+}
+
+.card p {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  color: #cccccc;
+}
+
+input[type="text"] {
+  width: 34%;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border: none;
+  border-radius: 6px;
+  background-color: #2c2c2c;
+  color: #ffffff;
+}
+
+button {
+  width: 25%;
+  padding: 0.75rem;
+  background-color: #2979ff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+button:hover {
+  background-color: #1565c0;
+}
+
+.info {
+  margin-top: 1rem;
+  font-size: 1rem;
+  color: #e0e0e0;
+}
+#result {
+      list-style-type: none; 
+      padding: 0;
+    }
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+
+  button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #1573c5;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+button {
+  padding: 12px 24px;
+  font-size: 18px;
+  background-color: #2196f3; /* синій */
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #1976d2; /* темніший синій при наведенні */
+}
+canvas {
+  border: 3px dashed #2196f3;
+  border-radius: 12px;
+  margin-top: 30px;
+  background-color: white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+
+
+

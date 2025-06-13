@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Калькулятор фігур</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <h1>Геометричний калькулятор</h1>
+
+  <div class="container">
+    <div class="block">
+      <h2>Прямокутник</h2>
+      <label>Довжина:</label>
+      <input type="number" id="rectLength" placeholder="Введіть довжину">
+      <label>Ширина:</label>
+      <input type="number" id="rectWidth" placeholder="Введіть ширину">
+      <button onclick="calculateRectangle()">Обчислити</button>
+      <div class="result" id="rectResult"></div>
+    </div>
+
+    <div class="block">
+      <h2>Трикутник</h2>
+      <label>Сторона A:</label>
+      <input type="number" id="sideA" placeholder="Введіть сторону A">
+      <label>Сторона B:</label>
+      <input type="number" id="sideB" placeholder="Введіть сторону B">
+      <label>Сторона C:</label>
+      <input type="number" id="sideC" placeholder="Введіть сторону C">
+      <button onclick="calculateTriangle()">Обчислити</button>
+      <div class="result" id="triResult"></div>
+    </div>
+  </div>
+
+  <script>
+    function calculateRectangle() {
+      const length = parseFloat(document.getElementById("rectLength").value);
+      const width = parseFloat(document.getElementById("rectWidth").value);
+      const result = document.getElementById("rectResult");
+
+      if (length > 0 && width > 0) {
+        const perimeter = 2 * (length + width);
+        const area = length * width;
+        result.textContent = `Периметр: ${perimeter}, Площа: ${area}`;
+      } else {
+        result.textContent = "Введіть коректні значення!";
+      }
+    }
+
+    function calculateTriangle() {
+      const a = parseFloat(document.getElementById("sideA").value);
+      const b = parseFloat(document.getElementById("sideB").value);
+      const c = parseFloat(document.getElementById("sideC").value);
+      const result = document.getElementById("triResult");
+
+      if (a > 0 && b > 0 && c > 0 && a + b > c && a + c > b && b + c > a) {
+        const perimeter = a + b + c;
+        const s = perimeter / 2;
+        const area = Math.sqrt(s * (s - a) * (s - b) * (s - c));
+        result.textContent = `Периметр: ${perimeter}, Площа: ${area.toFixed(2)}`;
+      } else {
+        result.textContent = "Неможливо утворити трикутник з таких сторін!";
+      }
+    }
+  </script>
+<a href="index.html" class="button">← Назад до меню</a>
+</body>
+</html>

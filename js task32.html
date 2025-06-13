@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+     <h1>Генерація слів з затримкою</h1>
+
+  <div class="inputs">
+    <div class="input-block">
+      <label for="count">Скільки слів хочеш?</label>
+      <input type="number" id="count" />
+    </div>
+    <div class="input-block">
+      <label for="word">Яке слово хочеш?</label>
+      <input type="text" id="word" />
+    </div>
+  </div>
+
+  <button onclick="startPrinting()">Старт</button>
+
+  <div id="output"></div>
+
+  <script>
+    function startPrinting() {
+      const count = parseInt(document.getElementById("count").value);
+      const word = document.getElementById("word").value;
+      const output = document.getElementById("output");
+      output.innerHTML = "";
+
+      if (!count || !word) {
+        output.innerText = "Будь ласка, заповни обидва поля.";
+        return;
+      }
+
+      let printed = 0;
+
+      const interval = setInterval(() => {
+        output.innerHTML += word + " ";
+        printed++;
+        if (printed >= count) {
+          clearInterval(interval);
+        }
+      }, 1000); // інтервал 1 секунда
+    }
+  </script>
+  <a href="index.html" class="button">← Назад до меню</a>
+</body>
+</html>

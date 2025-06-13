@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+     <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Введи літеру</h1>
+  <input type="text" id="letterInput" maxlength="1" />
+  <button onclick="showLetterNumber()">Показати номер</button>
+  <div id="result"></div>
+
+  <script>
+    const alphabet = "абвгґдеєжзийіклмнопрстуфхцчшщьюя";
+
+    function showLetterNumber() {
+      const input = document.getElementById("letterInput").value.toLowerCase();
+      const index = alphabet.indexOf(input);
+
+      const result = document.getElementById("result");
+      if (index === -1) {
+        result.innerText = "Це не літера українського алфавіту.";
+      } else {
+        result.innerText = `Літера "${input}" має номер ${index + 1}.`;
+      }
+    }
+  </script>
+    <a href="index.html" class="button">← Назад до меню</a>
+</body>
+</html>

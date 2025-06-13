@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Населення країн світу</title>
+   <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+      background-color: #111111;
+    }
+    input, button {
+      font-size: 16px;
+      padding: 10px;
+      margin: 10px;
+    }
+    #result {
+      margin-top: 20px;
+      font-weight: bold;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Перевір населення країни</h1>
+  <input type="text" id="countryInput" placeholder="Введіть назву країни">
+  <button onclick="showPopulation()">Показати інформацію</button>
+  <div id="result"></div>
+
+  <script>
+    const countries = [
+      { name: "Індія", population: 1464000000 },
+  { name: "Китай", population: 1416000000 },
+  { name: "США", population: 347000000 },
+  { name: "Індонезія", population: 286000000 },
+  { name: "Пакистан", population: 255000000 },
+  { name: "Нігерія", population: 238000000 },
+  { name: "Бразилія", population: 213000000 },
+  { name: "Бангладеш", population: 176000000 },
+  { name: "Росія", population: 144000000 },
+  { name: "Мексика", population: 132000000 },
+  { name: "Ефіопія", population: 135000000 },
+  { name: "Японія", population: 123000000 },
+  { name: "Філіппіни", population: 117000000 },
+  { name: "Єгипет", population: 118000000 },
+  { name: "ДР Конго", population: 113000000 },
+  { name: "Вʼєтнам", population: 102000000 },
+  { name: "Іран", population: 92000000 },
+  { name: "Туреччина", population: 88000000 },
+  { name: "Німеччина", population: 84000000 },
+  { name: "Таїланд", population: 72000000 },
+  { name: "Велика Британія", population: 70000000 },
+  { name: "Франція", population: 67000000 },
+  { name: "Італія", population: 59000000 },
+  { name: "Південна Корея", population: 52000000 },
+  { name: "Іспанія", population: 48000000 },
+  { name: "Канада", population: 40000000 },
+  { name: "Україна", population: 39000000 },
+  { name: "Польща", population: 38000000 },
+  { name: "Марокко", population: 38000000 },
+  { name: "Саудівська Аравія", population: 35000000 },
+  { name: "Узбекистан", population: 37000000 },
+  { name: "Малайзія", population: 36000000 },
+  { name: "Афганістан", population: 44000000 },
+  { name: "Ірак", population: 47000000 },
+  { name: "Ангола", population: 39000000 },
+  { name: "Судан", population: 52000000 },
+  { name: "Гана", population: 35000000 },
+  { name: "Ємен", population: 42000000 },
+  { name: "Мозамбік", population: 36000000 },
+  { name: "Непал", population: 32000000 },
+  { name: "Венесуела", population: 29000000 },
+  { name: "Мадагаскар", population: 33000000 },
+  { name: "Кот-д’Івуар", population: 33000000 },
+  { name: "Камерун", population: 31000000 },
+  { name: "Нігер", population: 30000000 },
+  { name: "Шрі-Ланка", population: 22000000 },
+  { name: "Буркіна-Фасо", population: 24000000 },
+  { name: "Малі", population: 23000000 },
+  { name: "Малаві", population: 21000000 },
+  { name: "Чилі", population: 20000000 },
+  { name: "Казахстан", population: 19000000 },
+  { name: "Замбія", population: 20000000 },
+  { name: "Гватемала", population: 20000000 },
+  { name: "Сенегал", population: 19000000 },
+  { name: "Чад", population: 18000000 },
+  { name: "Сомалі", population: 18000000 },
+  { name: "Зімбабве", population: 16000000 },
+  { name: "Гвінея", population: 14000000 },
+  { name: "Руанда", population: 14000000 },
+  { name: "Бенін", population: 14000000 },
+  { name: "Бурунді", population: 13000000 },
+  { name: "Туніс", population: 12000000 },
+  { name: "Болівія", population: 12000000 },
+  { name: "Бельгія", population: 12000000 },
+  { name: "Греція", population: 10500000 },
+  { name: "Португалія", population: 10400000 },
+  { name: "Чехія", population: 10500000 },
+  { name: "Швеція", population: 10600000 },
+  { name: "Азербайджан", population: 10300000 },
+  { name: "Гондурас", population: 10200000 },
+  { name: "ОАЕ", population: 9500000 },
+  { name: "Угорщина", population: 9600000 },
+  { name: "Білорусь", population: 9200000 },
+  { name: "Ізраїль", population: 9400000 },
+  { name: "Австрія", population: 9100000 },
+  { name: "Швейцарія", population: 8900000 },
+  { name: "Того", population: 8700000 },
+  { name: "Сьєрра-Леоне", population: 8500000 },
+  { name: "Лаос", population: 7500000 },
+  { name: "Папуа Нова Гвінея", population: 9800000 },
+  { name: "Парагвай", population: 7600000 },
+  { name: "Болгарія", population: 6600000 },
+  { name: "Лівія", population: 6700000 },
+  { name: "Сальвадор", population: 6300000 },
+  { name: "Нікарагуа", population: 6500000 },
+  { name: "Киргизстан", population: 6800000 },
+  { name: "Данія", population: 5900000 },
+  { name: "Сінгапур", population: 6000000 },
+  { name: "Фінляндія", population: 5600000 },
+  { name: "Словаччина", population: 5400000 },
+  { name: "Норвегія", population: 5500000 },
+  { name: "Оман", population: 5100000 },
+  { name: "Коста-Ріка", population: 5200000 },
+  { name: "Ірландія", population: 5200000 },
+  { name: "Нова Зеландія", population: 5100000 },
+  { name: "Кувейт", population: 4500000 },
+  { name: "Палестина", population: 5300000 },
+  { name: "Ліберія", population: 5400000 },
+  { name: "Панама", population: 4400000 },
+  { name: "Хорватія", population: 3800000 },
+  { name: "Мавританія", population: 4800000 },
+  { name: "Грузія", population: 3700000 },
+  { name: "Еритрея", population: 3600000 },
+  { name: "Уругвай", population: 3500000 },
+  { name: "Монголія", population: 3400000 },
+  { name: "Албанія", population: 2900000 },
+  { name: "Ямайка", population: 3000000 },
+  { name: "Литва", population: 2700000 },
+  { name: "Вірменія", population: 2800000 },
+  { name: "Катар", population: 2800000 },
+  { name: "Молдова", population: 2600000 },
+  { name: "Боснія і Герцеговина", population: 3200000 },
+  { name: "Пуерто-Рико", population: 3200000 },
+  { name: "Латвія", population: 1900000 },
+  { name: "Словенія", population: 2100000 },
+  { name: "Північна Македонія", population: 1900000 },
+  { name: "Естонія", population: 1300000 },
+  { name: "Тимор-Лешті", population: 1400000 },
+  { name: "Кіпр", population: 1200000 },
+  { name: "Джибуті", population: 1100000 },
+  { name: "Фіджі", population: 930000 },
+  { name: "Реюньйон", population: 900000 },
+  { name: "Коморські Острови", population: 870000 },
+  { name: "Гайана", population: 800000 },
+  { name: "Бутан", population: 770000 },
+  { name: "Суринам", population: 600000 },
+  { name: "Люксембург", population: 660000 },
+  { name: "Кабо-Верде", population: 600000 },
+  { name: "Мальта", population: 520000 },
+  { name: "Бруней", population: 450000 },
+  { name: "Багамські Острови", population: 400000 },
+  { name: "Мальдіви", population: 550000 },
+  { name: "Беліз", population: 440000 },
+  { name: "Ісландія", population: 370000 },
+  { name: "Барбадос", population: 280000 },
+  { name: "Вануату", population: 310000 },
+  { name: "Сан-Томе і Принсіпі", population: 240000 },
+  { name: "Самоа", population: 220000 },
+  { name: "Сент-Люсія", population: 180000 },
+  { name: "Кірібаті", population: 130000 },
+  { name: "Гренада", population: 110000 },
+  { name: "Сент-Вінсент і Гренадини", population: 110000 },
+  { name: "Тонга", population: 105000 },
+  { name: "Сейшели", population: 100000 },
+  { name: "Антигуа і Барбуда", population: 97000 },
+  { name: "Андорра", population: 77000 },
+  { name: "Сент-Кітс і Невіс", population: 54000 },
+  { name: "Монако", population: 39000 },
+  { name: "Ліхтенштейн", population: 39000 },
+  { name: "Сан-Марино", population: 34000 },
+  { name: "Палау", population: 18000 },
+  { name: "Тувалу", population: 12000 },
+  { name: "Науру", population: 11000 },
+  { name: "Ватикан", population: 800 }
+    ];
+
+    function showPopulation() {
+      const input = document.getElementById('countryInput').value.trim();
+      const country = countries.find(c => c.name.toLowerCase() === input.toLowerCase());
+      const resultDiv = document.getElementById('result');
+
+      if (country) {
+        resultDiv.textContent = `${country.name}: ${country.population.toLocaleString('uk-UA')} осіб`;
+      } else {
+        resultDiv.textContent = 'Країну не знайдено. Перевірте правильність написання.';
+      }
+    }
+  </script>
+  <a href="index.html" class="button">← Назад до меню</a>
+</body>
+</html>
+

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Пошук підрядка в рядку</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h2>Знаходження підрядка у рядку</h2>
+
+  <label>Введіть основний рядок:</label><br>
+  <input type="text" id="mainString" placeholder="Наприклад, Я люблю програмування"><br><br>
+
+  <label>Введіть підрядок для пошуку:</label><br>
+  <input type="text" id="substring" placeholder="Наприклад, програмування"><br><br>
+
+  <button onclick="findSubstring()">Перевірити</button>
+
+  <h3>Результат:</h3>
+  <p id="result"></p>
+
+  <script>
+    function findSubstring() {
+      const main = document.getElementById('mainString').value;
+      const sub = document.getElementById('substring').value;
+      const result = document.getElementById('result');
+
+      if (!main || !sub) {
+        result.textContent = "Будь ласка, заповніть обидва поля.";
+        return;
+      }
+
+      if (main.includes(sub)) {
+        result.textContent = `✅ Підрядок "${sub}" знайдено в рядку.`;
+      } else {
+        result.textContent = `❌ Підрядок "${sub}" не знайдено в рядку.`;
+      }
+    }
+  </script>
+  <a href="index.html" class="button">← Назад до меню</a>
+</body>
+</html>

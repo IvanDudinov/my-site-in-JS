@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Міні-гра: Пори року</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="card">
+    <h1>🌦️ Міні-гра: Вгадай пору року</h1>
+    <p>Введи опис погоди, а ми вгадаємо пору року!</p>
+    <input type="text" id="seasonInput" placeholder="Наприклад: тепло, цвітуть дерева">
+    <button onclick="guessSeason()">Вгадати пору року</button>
+    <div class="info" id="seasonResult"></div>
+  </div>
+
+  <script>
+    function guessSeason() {
+      const input = document.getElementById("seasonInput").value.toLowerCase();
+      let result = "Не вдалося вгадати пору року.";
+
+      if (input.includes("сніг") || input.includes("мороз") || input.includes("льод") || input.includes("новий рік") || input.includes("холодно")) {
+        result = "❄️ Це зима!";
+      } else if (input.includes("цвіт") || input.includes("тепло") || input.includes("пташки") || input.includes("травень")) {
+        result = "🌸 Це весна!";
+      } else if (input.includes("жарко") || input.includes("сонце") || input.includes("пляж") || input.includes("відпустка")) {
+        result = "🌞 Це літо!";
+      } else if (input.includes("листя") || input.includes("жовтий") || input.includes("прохолодно") || input.includes("жовтень")) {
+        result = "🍂 Це осінь!";
+      }
+
+      document.getElementById("seasonResult").textContent = result;
+    }
+  </script>
+<a href="index.html" class="button">← Назад до меню</a>
+</body>
+</html>

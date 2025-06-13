@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Glory to Ukraine!</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>How many greetings should be displayed?</h1>
+  <input type="number" id="countInput" placeholder="Enter a number">
+  <button onclick="showGreetings()">Show Greetings</button>
+  <div id="output"></div>
+
+  <script>
+    function showGreetings() {
+      const count = parseInt(document.getElementById('countInput').value);
+      const output = document.getElementById('output');
+      output.innerHTML = '';
+
+      if (isNaN(count) || count < 1) {
+        output.innerHTML = '<div class="warning">Please enter a valid number.</div>';
+        return;
+      }
+
+      if (count > 20) {
+        output.innerHTML = '<div class="warning">I understand you are a patriot, but let\'s not break your computer 😅</div>';
+        return;
+      }
+
+      for (let i = 0; i < count; i++) {
+        const div = document.createElement('div');
+        div.className = 'greeting';
+        div.textContent = 'Glory to Ukraine!';
+        output.appendChild(div);
+      }
+    }
+  </script>
+    <a href="index.html" class="button">← Назад до меню</a>
+</body>
+</html>

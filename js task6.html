@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Мінігра оцінки</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Яку оцінку ти сьогодні заробив?</h1>
+  <input type="number" id="gradeInput" min="1" max="12" placeholder="Введи оцінку (1-12)">
+  <button onclick="checkGrade()">Перевірити рівень</button>
+  <p id="result"></p>
+
+  <script>
+    function checkGrade() {
+      const grade = parseInt(document.getElementById("gradeInput").value);
+      const result = document.getElementById("result");
+
+      let message = "";
+
+      if (isNaN(grade) || grade < 1 || grade > 12) {
+        message = "Введи коректну оцінку від 1 до 12.";
+      } else if (grade >= 1 && grade <= 3) {
+        message = "Початковий рівень, це твоє життя як хочеш ¯\_(ツ)_/¯";
+      } else if (grade >= 4 && grade <= 6) {
+        message = "Середній рівень, міг би і краще.";
+      } else if (grade >= 7 && grade <= 9) {
+        message = "Достатній рівень, трохи нехватило";
+      } else if (grade >= 10 && grade <= 12) {
+        message = "Високий рівень, молодець попрацював!";
+      }
+
+      result.textContent = message;
+    }
+  </script>
+   <a href="index.html" class="button">← Назад до меню</a>
+</body>
+</html>

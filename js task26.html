@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Гнучка шахівниця на Canvas</title>
+      <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background-color: black;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+        canvas {
+            margin-top: 50px;
+            background-color: white;
+            border: 2px solid white;
+        }
+    </style>
+</head>
+<body>
+    <h1>Гнучка шахівниця на Canvas</h1>
+    <label>Кількість білих клітинок: <input type="number" id="whiteInput" placeholder="Напр. 10"></label>
+    <br>
+    <label>Кількість чорних клітинок: <input type="number" id="blackInput" placeholder="Напр. 10"></label>
+    <br>
+    <button onclick="drawBoard()">Намалювати</button>
+
+    <canvas id="chessCanvas"></canvas>
+
+    <script>
+        function drawBoard() {
+            const whiteCount = parseInt(document.getElementById('whiteInput').value);
+            const blackCount = parseInt(document.getElementById('blackInput').value);
+            const totalCells = whiteCount + blackCount;
+
+            // Порахувати ряди і стовпці для трохи розтягнутого вигляду
+            const cols = Math.ceil(Math.sqrt(totalCells * 1.5)); // ширше
+            const rows = Math.ceil(totalCells / cols);
+
+            const cellSize = 20; // менші клітинки
+
+            const canvas = document.getElementById('chessCanvas');
+            canvas.width = cols * cellSize;
+            canvas.height = rows * cellSize;
+
+            const ctx = canvas.getContext('2d');
+
+            // Очистити білим фоном
+            ctx.fillStyle = 'white';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            let whiteLeft = whiteCount;
+            let blackLeft = blackCount;
+
+            for (let row = 0; row < rows; row++) {
+                for (let col = 0; col < cols; col++) {
+                    if (whiteLeft === 0 && blackLeft === 0) return;
+
+                    const x = col * cellSize;
+                    const y = row * cellSize;
+                    const isBlackSquare = (row + col) % 2 === 1;
+
+                    if (isBlackSquare && blackLeft > 0) {
+                        ctx.fillStyle = 'black';
+                        ctx.fillRect(x, y, cellSize, cellSize);
+                        blackLeft--;
+                    } else if (!isBlackSquare && whiteLeft > 0) {
+                        whiteLeft--;
+                        // біла клітинка — залишаємо фон
+                    } else if (isBlackSquare && whiteLeft > 0) {
+                        whiteLeft--;
+                    } else if (!isBlackSquare && blackLeft > 0) {
+                        ctx.fillStyle = 'black';
+                        ctx.fillRect(x, y, cellSize, cellSize);
+                        blackLeft--;
+                    }
+                }
+            }
+        }
+    </script>
+    <a href="index.html" class="button">← Назад до меню</a>
+</body>
+</html>

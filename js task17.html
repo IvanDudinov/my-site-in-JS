@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Трикутник із символів</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h2>Трикутник із символів</h2>
+  <label for="symbol">Введіть символ або смайлик:</label><br>
+  <input type="text" id="symbol" placeholder="Наприклад, * або 😊"><br><br>
+
+  <label for="height">Введіть висоту трикутника:</label><br>
+  <input type="number" id="height" placeholder="Наприклад, 5" min="1"><br><br>
+
+  <button onclick="drawTriangle()">Намалювати</button>
+
+  <h3>Результат:</h3>
+  <pre id="result" style="font-size: 18px;"></pre>
+
+  <script>
+    function drawTriangle() {
+      const symbol = document.getElementById('symbol').value;
+      const height = parseInt(document.getElementById('height').value);
+      const resultArea = document.getElementById('result');
+      resultArea.textContent = '';
+
+      if (!symbol) {
+        resultArea.textContent = "Будь ласка, введіть символ.";
+        return;
+      }
+
+      if (isNaN(height) || height < 1) {
+        resultArea.textContent = "Висота має бути числом більше нуля.";
+        return;
+      }
+
+      let triangle = '';
+      for (let i = 1; i <= height; i++) {
+        triangle += symbol.repeat(i) + '\n';
+      }
+
+      resultArea.textContent = triangle;
+    }
+  </script>
+  <a href="index.html" class="button">← Назад до меню</a>
+</body>
+</html>

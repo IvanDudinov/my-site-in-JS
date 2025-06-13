@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <title>Генератор компліментів</title>
+     <link rel="stylesheet" href="style.css">
+</head>
+<h1>Лови комплімент на день!</h1>
+  <button onclick="showCompliment()">Показати комплімент</button>
+  <div id="compliment"></div>
+
+  <script>
+    const compliments = [
+      "розумн__",
+      "мил__",
+      "весел__",
+      "доброзичлив__",
+      "чарівн__",
+      "стильн__",
+      "щир__",
+      "смілив__",
+      "цікав__"
+    ];
+
+    function showCompliment() {
+      const isFemale = Math.random() < 0.5;
+      const ending = isFemale ? "а" : "ий";
+      const word = compliments[Math.floor(Math.random() * compliments.length)].replace("__", ending);
+      const phrase = isFemale ? "Ти така" : "Ти такий";
+      document.getElementById("compliment").innerText = `${phrase} ${word}!`;
+    }
+  </script>
+  <a href="index.html" class="button">← Назад до меню</a>
+</body>
+</html>
+
+  

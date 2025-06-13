@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Гра: Вгадай число</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h2>Гра: Вгадай число від 1 до 100</h2>
+  <input type="number" id="guess" placeholder="Ваше число" min="1" max="100">
+  <button onclick="checkGuess()">Перевірити</button>
+
+  <h3>Результат:</h3>
+  <p id="result"></p>
+
+  <script>
+    const secretNumber = Math.floor(Math.random() * 100) + 1;
+    let attempts = 0;
+
+    function checkGuess() {
+      const userGuess = parseInt(document.getElementById('guess').value);
+      const result = document.getElementById('result');
+      attempts++;
+
+      if (isNaN(userGuess) || userGuess < 1 || userGuess > 100) {
+        result.innerText = "Будь ласка, введіть число від 1 до 100.";
+        return;
+      }
+
+      if (userGuess === secretNumber) {
+        result.innerText = `🎉 Вітаємо! Ви вгадали число ${secretNumber} за ${attempts} спроб.`;
+      } else if (userGuess < secretNumber) {
+        result.innerText = "Занадто мало. Спробуйте ще!";
+      } else {
+        result.innerText = "Занадто багато. Спробуйте ще!";
+      }
+    }
+  </script>
+  <a href="index.html" class="button">← Назад до меню</a>
+</body>
+</html>

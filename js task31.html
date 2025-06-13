@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+   <link rel="stylesheet" href="style.css"> 
+</head>
+<body>
+  <h1>Вкажи бажану зарплату</h1>
+
+  <div class="salary-block">
+    <label for="zhenya">Скільки ти хочеш зарплати для Жені?</label>
+    <input type="number" id="zhenya" />
+  </div>
+
+  <div class="salary-block">
+    <label for="ivan">Скільки ти хочеш зарплати для Івана?</label>
+    <input type="number" id="ivan" />
+  </div>
+
+  <div class="salary-block">
+    <label for="olena">Скільки ти хочеш зарплати для Олени?</label>
+    <input type="number" id="olena" />
+  </div>
+
+  <div class="salary-block">
+    <label for="andriy">Скільки ти хочеш зарплати для Андрія?</label>
+    <input type="number" id="andriy" />
+  </div>
+
+  <button onclick="findMaxSalary()">Хто отримає найбільше?</button>
+
+  <div id="result"></div>
+
+  <script>
+    function findMaxSalary() {
+      const salaries = {
+        Женя: parseFloat(document.getElementById("zhenya").value) || 0,
+        Іван: parseFloat(document.getElementById("ivan").value) || 0,
+        Олена: parseFloat(document.getElementById("olena").value) || 0,
+        Андрій: parseFloat(document.getElementById("andriy").value) || 0
+      };
+
+      let maxName = "";
+      let maxValue = 0;
+
+      for (const [name, salary] of Object.entries(salaries)) {
+        if (salary > maxValue) {
+          maxValue = salary;
+          maxName = name;
+        }
+      }
+
+      document.getElementById("result").innerText =
+        maxValue > 0
+          ? `${maxName} повинен(на) отримувати найбільше — ${maxValue} грн.`
+          : "Будь ласка, введи значення для хоча б одного поля.";
+    }
+  </script>
+<a href="index.html" class="button">← Назад до меню</a>
+</body>
+</html>
